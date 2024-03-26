@@ -175,37 +175,39 @@ sections:
           url: ''
     design:
       columns: '2'
-  - block: collection
-    id: posts
-    content:
-      title: Recent Posts
-      subtitle: ''
-      text: ''
-      # Choose how many pages you would like to display (0 = all pages)
-      count: 5
-      # Filter on criteria
-      filters:
-        folders:
-          - post
-        author: ""
-        category: ""
-        tag: ""
-        exclude_featured: false
-        exclude_future: false
-        exclude_past: false
-        publication_type: ""
-      # Choose how many pages you would like to offset by
-      offset: 0
-      # Page order: descending (desc) or ascending (asc) date.
-      order: desc
-    design:
-      # Choose a layout view
-      view: compact
-      columns: '2'
+#  - block: collection
+#    id: posts
+#    content:
+#      title: Recent Posts
+#      subtitle: ''
+#      text: ''
+#      # Choose how many pages you would like to display (0 = all pages)
+#      count: 5
+#      # Filter on criteria
+#      filters:
+#        folders:
+#          - post
+#        author: ""
+#        category: ""
+#        tag: ""
+#        exclude_featured: false
+#        exclude_future: false
+#        exclude_past: false
+#        publication_type: ""
+#      # Choose how many pages you would like to offset by
+#      offset: 0
+#      # Page order: descending (desc) or ascending (asc) date.
+#      order: desc
+#    design:
+#      # Choose a layout view
+#      view: compact
+#      columns: '2'
+  
+
   - block: portfolio
     id: projects
     content:
-      title: Projects
+      title: Projects/Proyectos
       filters:
         folders:
           - project
@@ -220,70 +222,72 @@ sections:
         - name: All
           tag: '*'
         - name: Deep Learning
-          tag: Deep Learning
+          tag: Deep
         - name: Other
           tag: Demo
+          icon: brands/youtube
+          url: https://youtube.com
     design:
       # Choose how many columns the section has. Valid values: '1' or '2'.
       columns: '1'
       view: showcase
       # For Showcase view, flip alternate rows?
       flip_alt_rows: false
-  - block: markdown
-    content:
-      title: Gallery
-      subtitle: ''
-      text: |-
-        {{< gallery album="demo" >}}
-    design:
-      columns: '1'
-  - block: collection
-    id: featured
-    content:
-      title: Featured Publications
-      filters:
-        folders:
-          - publication
-        featured_only: true
-    design:
-      columns: '2'
-      view: card
-  - block: collection
-    content:
-      title: Recent Publications
-      text: |-
-        {{% callout note %}}
-        Quickly discover relevant content by [filtering publications](./publication/).
-        {{% /callout %}}
-      filters:
-        folders:
-          - publication
-        exclude_featured: true
-    design:
-      columns: '2'
-      view: citation
-  - block: collection
-    id: talks
-    content:
-      title: Recent & Upcoming Talks
-      filters:
-        folders:
-          - event
-    design:
-      columns: '2'
-      view: compact
-  - block: tag_cloud
-    content:
-      title: Popular Topics
-    design:
-      columns: '2'
+#  - block: markdown
+#    content:
+#      title: Gallery
+#      subtitle: ''
+#      text: |-
+#        {{< gallery album="demo" >}}
+#    design:
+#      columns: '1'
+#  - block: collection
+#    id: featured
+#    content:
+#      title: Featured Publications
+#      filters:
+#        folders:
+#          - publication
+#        featured_only: true
+#    design:
+#      columns: '2'
+#      view: card
+#  - block: collection
+#    content:
+#      title: Recent Publications
+#      text: |-
+#        {{% callout note %}}
+#        Quickly discover relevant content by [filtering publications](./publication/).
+#        {{% /callout %}}
+#      filters:
+#        folders:
+#          - publication
+#        exclude_featured: true
+#    design:
+#      columns: '2'
+#      view: citation
+#  - block: collection
+#    id: talks
+#    content:
+#      title: Recent & Upcoming Talks
+#      filters:
+#        folders:
+#          - event
+#    design:
+#      columns: '2'
+#      view: compact
+#  - block: tag_cloud
+#    content:
+#      title: Popular Topics
+#    design:
+#      columns: '2'
   - block: contact
     id: contact
     content:
-      title: Contact/Contáctame
+      title: Contact
       subtitle:
       text: |-
-        Si necesitas realizar consultas sobre temas relacionados a los negocios.
+        Si necesitas realizar contactar
       # Contact (add or remove contact options as necessary)
       #email: test@example.org
       #phone: 888 888 88 88
