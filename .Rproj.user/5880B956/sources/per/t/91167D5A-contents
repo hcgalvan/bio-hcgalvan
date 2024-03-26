@@ -1,0 +1,87 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+# example of generating synthetic data from a logistic regression model:
+# Set the sample size
+n <- 1000
+
+# Define the true parameter values
+# Define the true parameter values
+beta0 <- -12.33751   # Intercept
+beta1 <- -2.461278  # Coefficient for X1
+beta2 <- -8.80537 # Coefficient for X2
+
+# Generate the predictor variables
+X1 <- rnorm(n, mean = 0, sd = 1)
+X2 <- rbinom(n, size = 1, prob = 0.5)
+
+# Calculate the linear predictor
+linear_predictor <- beta0 + beta1 * X1 + beta2 * X2
+
+# Generate the binary response variable (Y) from the binomial distribution
+Y <- rbinom(n, size = 1, prob = plogis(linear_predictor))
+
+# Combine the variables into a data frame
+synthetic_data <- data.frame(X1, X2, Y)
+```
+
+```{r}
+# approach combine simulation Monte Carlo is used to test drive estimators and bootstrap used to estimate the variability of a statistic 
+# example of how you can combine these two resampling approaches:
+
+
+# Set the number of Monte Carlo simulations
+n_sims <- 1000
+
+# Set the number of bootstrap replicates
+n_boot <- 500
+
+# Load the required package for bootstrapping
+library(boot)
+
+estimate_parameter<- function (data){
+  rlog<- glm(Y ~ X1 + X2,  #D ~ A + λzi, 
+                 data = d,
+                 family = binomial)
+  return(rlog)
+}
+
+
+# Initialize vectors to store the results
+estimates <- numeric(n_sims)
+boot_ses <- numeric(n_sims)
+
+# Run the Monte Carlo simulations
+for (i in 1:n_sims) {
+  # Generate synthetic data based on a known model or process
+  data <- synthetic_data #generate_data(...)
+  
+  # Apply the estimator or method of interest
+  estimates[i] <- estimate_parameter(data)
+  
+  # Define the function to calculate the statistic of interest
+  stat_func <- function(data, indices) {
+      d <- data[indices, ]
+      deviance(d)
+  }
+  
+  # Perform bootstrapping
+  boot_output <- boot(data = data, statistic = stat_func, R = n_boot)
+  
+  # Estimate the bootstrap standard error
+  boot_ses[i] <- boot.ci(boot_output, type = "bca")$bca[4]
+}
+
+# Evaluate the performance of the estimator
+mean_estimate <- mean(estimates)
+bias <- mean_estimate - true_parameter_value
+variance <- var(estimates)
+mse <- mean((estimates - true_parameter_value)^2)
+
+# Summarize the bootstrap standard errors
+boot_se_mean <- mean(boot_ses)
+boot_se_sd <- sd(boot_ses)
+```

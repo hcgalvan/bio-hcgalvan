@@ -1,0 +1,24 @@
+"0","```r
+# example of generating synthetic data from a logistic regression model:
+# Set the sample size
+n <- 1000
+
+# Define the true parameter values
+# Define the true parameter values
+beta0 <- -12.33751   # Intercept
+beta1 <- -2.461278  # Coefficient for X1
+beta2 <- -8.80537 # Coefficient for X2
+
+# Generate the predictor variables
+X1 <- rnorm(n, mean = 0, sd = 1)
+X2 <- rbinom(n, size = 1, prob = 0.5)
+
+# Calculate the linear predictor
+linear_predictor <- beta0 + beta1 * X1 + beta2 * X2
+
+# Generate the binary response variable (Y) from the binomial distribution
+Y <- rbinom(n, size = 1, prob = plogis(linear_predictor))
+
+# Combine the variables into a data frame
+synthetic_data <- data.frame(X1, X2, Y)
+```"
