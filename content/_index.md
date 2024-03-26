@@ -233,12 +233,12 @@ sections:
       view: showcase
       # For Showcase view, flip alternate rows?
       flip_alt_rows: false
-#  - block: markdown
-#    content:
-#      title: Gallery
-#      subtitle: ''
-#      text: |-
-#        {{< gallery album="demo" >}}
+  - block: markdown
+    content:
+      title: Certificados mas vistos
+      subtitle: ''
+      text: |-
+        {{< gallery album="certificas" >}}
 #    design:
 #      columns: '1'
 #  - block: collection
